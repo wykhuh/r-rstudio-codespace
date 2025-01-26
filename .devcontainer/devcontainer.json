@@ -1,0 +1,26 @@
+{
+  "name": "R (rocker/r-ver base)",
+  "image": "ghcr.io/rocker-org/devcontainer/r-ver:4.4",
+  "features": {
+    /*  packages needed by sf*/
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "libudunits2-dev,libgdal-dev,libgeos-dev,libproj-dev"
+    },
+    /* add additional r packages here */
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+      "packages": "tidyverse,sf,lubridate,mapview"
+    },
+    /* setup RStudio server */
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {}
+  },
+  /* setup RStudio server */
+  "postAttachCommand": {
+    "rstudio-start": "rserver"
+  },
+  "forwardPorts": [8787],
+  "portsAttributes": {
+    "8787": {
+      "label": "RStudio IDE"
+    }
+  }
+}
