@@ -8,13 +8,14 @@
     },
     /* add additional r packages here */
     "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-      "packages": "tidyverse,sf,lubridate,mapview"
+      "packages": "tidyverse,lubridate,here,sf,mapview,languageserver"
     },
     /* setup RStudio server */
     "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {}
   },
   /* setup RStudio server */
   "postAttachCommand": {
+    "timer": "python3 scripts/timer.py",
     "rstudio-start": "rserver"
   },
   "forwardPorts": [8787],
