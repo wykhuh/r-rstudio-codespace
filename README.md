@@ -4,7 +4,7 @@ This template can be used to create repos that uses GitHub Codespaces to run R a
 
 ## Features
 - Configures a codespace that has R and RStudio
-- Installs R packages tidyverse, lubridate (dates), sf (vector geospatial files), and mapview (interactive maps)
+- Installs R packages tidyverse, lubridate (dates), here (file paths), sf (vector geospatial files), and mapview (interactive maps)
 - Install RStudio server so people can use RStudio in codespace
 - Sets up a basic folder structure
 
@@ -26,35 +26,83 @@ To change the list of R packages, edit `.devcontainer/devcontainer.json`,
 
 ```json
 "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-  "packages": "tidyverse,lubridate,sf,mapview"
+  "packages": "tidyverse,lubridate,here,sf,mapview,languageserver"
 },
 ```
 
-## Usage
+## Intial setup
 
 ### Create a new respository
 
-1. Go to [template's homepage](https://github.com/wykhuh/r-rstudio-codespace), and click the green "Use this template" button near the top of the page.
+1. Click the green "Use this template" button near the top of the page.
 
 2. Select "Create a new repository" from the dropdown.
 
-3. Follow the instructions on the "Create a new repository" page.
+3. Follow the instructions on the "Create a new repository" page. Fill in "Repository Name". You can optionally add a "Description". Select if you want a "Public" or "Private" repo. Click "Create repository" button.
 
-### Create to a codespace
+### Create to a Codespace
 
 1. On your new repo's homepage, click the green "Code" button.
 
-2. Click "Codespaces" tab. Click the green "Create codespace on main" button.
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/coding-after-workshop/code-button.png)
 
-A new browser window is created. It will take a few minutes to download the R packages and build a codespace.
+2. Click "Codespaces" tab.
 
-### start RStudio.
+3.  a\. If there are no Codespaces for the repo, click the green "Create codespace on main" button. The browser window loads the Codespace.
 
-1. Click on "PORTS" tab near the bottom.
+    ![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/coding-after-workshop/create-codespace-main.png)
 
-2. Hover over the RStudio item in the list of ports.
+    b\. If a Codespace exists for the repo, click the three dots in the "On current branch" section.
 
-3. Click the middle globe icon in the "Forwarded Address" column to open a new browser tab with RStudio.
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/coding-after-workshop/existing-codespace.png)
 
-There is R script in `scripts/my_script.R` that reads from a CSV, updates the data, and creates two CSVs.
+Click "Open in Browser" in the popup window. This will restart an existing Codespace in a browser tab. It will take a few minutes to download the R packages and build a codespace.
 
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/building-codespace.png)
+
+### Start RStudio.
+
+1. When Codespace is done building, we need to start RStudio. Click on the "PORTS" tab at the bottom.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/finish-building.png)
+
+2. In the PORTS tab, hover over the item named RStudio or 8787. Click on the middle globe icon to start RStudio in a new browser tab.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/rstudio-port.png)
+
+3. Now you are ready to write and run R code using RStudio. Even though we won't use Visual Studio Code to write R code, keep the tab for Visual Studio Code open.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/rstudio.png)
+
+### Stop RStudio and Codespace
+
+After you finish your work for the day, you need to stop RStudio, push your code changes to your repository and, stop Codespace. If you don't stop Codespace, it will continue to run and use up your free 60 hours a month.
+
+1. To stop R, click the orange circle in the upper right of RStudio.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/stop_R.png)
+
+2. You'll see a message "R Session Ended". Close the browser tab for RStudio.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/r_session_ended.png)
+
+3. Go to the Visual Studio Code browser tab. Click "bash". Click "TERMINAL".
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/bash.png)
+
+4. To save the changed files to your repository, type "bash scripts/save_files.sh" after the \$, and hit return/enter.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/bash_save_files.png)
+
+5. To stop Codespace, click the blue area in the lower left corner of Visual Studio Code.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/stop_codespace_button.png)
+
+6. A popup window will appear. Click "Stop Current Codespace".
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/setup/stop_codespace.png)
+
+7. After a little while, you will see a "Codespace is stopped" message. You can now close the browser tab.
+
+![](https://github.com/wykhuh/after-inaturalist-r/tree/main/lessons/images/codespace-stop/Codespace-stopped.png){width="425"}
